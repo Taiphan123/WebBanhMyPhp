@@ -2,10 +2,10 @@
 <html lang="en">
   <head>
     <title>About</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <?php
+		require "common/header.php"
+		?>
+ 
     <!--===============================================================================================-->	
 	  <link rel="icon" type="image/png" href="images/icons/388.ico"/>
     <!--===============================================================================================-->
@@ -49,28 +49,9 @@
   <body>
   <?php session_start(); ?>
   <?php include("permission.php");?>
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.php">OngRut Bakery.</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="oi oi-menu"></span> Menu
-        </button>
-  
-        <div class="collapse navbar-collapse" id="ftco-nav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.php" class="nav-link">Home</a></li>
-            <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="menus.php" class="nav-link">Menus</a></li>
-            <li class="nav-item"><a href="detail.php" class="nav-link">Detail</a></li>
-            <li class="nav-item"><a href="coffee.php" class="nav-link">Coffee</a></li>
-            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
-            <li class="nav-item"><a href="customer.php" class="nav-link">Customer</a></li>
-            <li class="nav-item cta"><a href="add_KH.php" class="nav-link"><span>Add Customer</span></a></li>
-            <li class="nav-item cta"><a href="add.php" class="nav-link"><span>Add listing</span></a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  <?php
+    require "common/nav.php";
+    ?> 
       <!-- END nav -->
       
     <div class="hero-wrap js-fullheight" style="background-image: url('images/91.webp');">
@@ -98,7 +79,7 @@
                   </div>
                 </div>    		
               </div>
-              <div class="my-4">
+              <div style="width: fit-content;" class="block-17 my-4">
               <form style="padding-top: 0px !important" action="" method="post" class="d-block d-flex">
                 <div style="padding-top: 0px !important" class="fields d-block d-flex">
                   <div class="textfield-search one-third">
@@ -174,70 +155,19 @@
                         mysqli_close($conn);
                     ?>
               </div>
-            <a style="color: #fff" href="add.php"><button id="thna" class="button-clean-fruit" onclick="color()">Add</button></a>
+            <!-- <a style="color: #fff" href="add.php"><button id="thna" class="button-clean-fruit" onclick="color()">Add</button></a> -->
         </div>
       </div>
     </div>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-      <div class="container">
-        <div style="margin-bottom: 0 !important; background: none" class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">OngRut Bakery.</h2>
-              <p>Trời ơi tin được hông được hông!</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Information</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Service</a></li>
-                <li><a href="#" class="py-2 d-block">Terms and Conditions</a></li>
-                <li><a href="#" class="py-2 d-block">Become a partner</a></li>
-                <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                <li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-              <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Customer Support</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                <li><a href="#" class="py-2 d-block">How it works</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Have a Questions?</h2>
-              <div class="block-23 mb-3">
-                <ul>
-                  <li><span class="icon icon-map-marker"></span><span class="text">566 Nui Thanh St. Hai Chau District, Da Nang City, Viet Nam</span></li>
-                  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+84 76 306 1890</span></a></li>
-                  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">ongrutbakery@gmail.com</span></a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <?php
+    require "common/footer.php"
+    ?>
     
   
 
   <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <!-- <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div> -->
 
 
   <script src="js/jquery.min.js"></script>

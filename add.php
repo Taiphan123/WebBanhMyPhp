@@ -6,7 +6,7 @@
 		require "common/header.php"
 		?>
     <script type="text/javascript" src="js/ckeditor/ckeditor.js"></script>
-    
+  </head>
   <body>
   <?php session_start(); ?>
   <?php include("permission.php");?>
