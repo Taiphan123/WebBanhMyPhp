@@ -10,7 +10,7 @@
 
   </head>
   <body>
-    
+  <?php session_start(); ?>
        <?php
     require "common/nav.php";
     ?>
@@ -44,13 +44,13 @@
 		              <div class="form-group">
 		                <div class="select-wrap one-third">
 	                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-	                    <select name="" id="" class="form-control" placeholder="Keyword search">
+	                    <select name="thucdon" id="" class="form-control" placeholder="Keyword search">
 						<option value="">ALL</option>
-	                      <option value="">BREAKFAST</option>
-	                      <option value="">LUNCH</option>
-	                      <option value="">CAFÉ</option>
-	                      <option value="">BREAD AND BAKERY CASE.</option>
-	                      <option value="">DRINKS</option>
+	                      <option value="0">BREAKFAST</option>
+	                      <option value="1">LUNCH</option>
+	                      <option value="2">CAFÉ</option>
+	                      <option value="3">BREAD AND BAKERY CASE.</option>
+	                      <option value="4">DRINKS</option>
 	                    </select>
 	                  </div>
 		              </div>
@@ -65,17 +65,33 @@
 						</div>
 		              </div>
 		              <div class="form-group">
-		                <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
+					  <input  type="submit" value="Search" class="btn btn-primary py-3 px-5" name="btnSearch">
 		              </div>
 		            </div>
 	            </form>
         		</div>
           </div>
           <div class="col-lg-9">
-          	<div class="row">
+		  <div class="row">
+			  <?php 
+                    $conn = mysqli_connect("localhost" , "root" , "" , "banhmy");
+                    mysqli_set_charset($conn, 'UTF-8');
+                    if(isset($_POST["btnSearch"])) { $result=mysqli_query($conn, " SELECT * FROM `table_banhmy` WHERE `thuc_don`=2 "); }
+                    else
+                    {
+					
+						$result=mysqli_query($conn, " SELECT * FROM `table_banhmy` ");
+					}
+					$i=1;
+					$ten;
+                    while($row=mysqli_fetch_assoc($result))
+                    {
+						$i++;
+						
+            ?>
           				<div class="col-md-4 ftco-animate">
 		    				<div class="destination">
-								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/1.png);">
+								<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/<?php echo $row["hinh"]; ?>);">
 									<div class="icon d-flex justify-content-center align-items-center">
 											<span class="icon-search2"></span>
 									</div>
@@ -83,7 +99,7 @@
 								<div class="text p-3">
 										<div class="d-flex">
 											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
+												<h3><a name="ten" href="#"><?php echo $row['ten']; ?></a></h3>
 												<p class="rate">
 													<i class="icon-star"></i>
 													<i class="icon-star"></i>
@@ -94,7 +110,7 @@
 												</p>
 											</div>
 											<div class="two">
-												<span class="price">$2</span>
+												<span class="price">$ <?php echo $row["gia"];?> </span>
 											</div>
 										</div>
 										<p></p>
@@ -102,183 +118,16 @@
 										<hr>
 										<p class="bottom-area d-flex">
 											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto "><a href="#login-box" class="show-window ">Discover</a></span>
+											<span name ="Discover"  class="ml-auto "><a href="#login-box"  class="show-window ">Discover</a></span>
 											
 										</p>
 								</div>
 							</div>
 		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-									<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/2.png);">
-										<div class="icon d-flex justify-content-center align-items-center">
-											<span class="icon-search2"></span>
-										</div>
-									</a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price">$2</span>
-											</div>
-										</div>
-										<p></p>
-										<p class="days"><span>BAKERY - SWEET - BIO</span></p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto"><a href="#login-box" class="show-window ">Discover</a></span>
-										</p>
-									</div>
-								</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-									<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/3.png);">
-										<div class="icon d-flex justify-content-center align-items-center">
-											<span class="icon-search2"></span>
-										</div>
-									</a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price">$2</span>
-											</div>
-										</div>
-										<p></p>
-										<p class="days"><span>BAKERY - SWEET - BIO</span></p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto"><a href="#login-box" class="show-window ">Discover</a></span>
-										</p>
-									</div>
-								</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-									<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/6.png);">
-										<div class="icon d-flex justify-content-center align-items-center">
-											<span class="icon-search2"></span>
-										</div>
-									</a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price">$2</span>
-											</div>
-										</div>
-										<p></p>
-										<p class="days"><span>BAKERY - SWEET - BIO</span></p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto"><a href="#">Discover</a></span>
-										</p>
-									</div>
-								</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-									<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/7.png);">
-										<div class="icon d-flex justify-content-center align-items-center">
-											<span class="icon-search2"></span>
-										</div>
-									</a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price">$2</span>
-											</div>
-										</div>
-										<p></p>
-										<p class="days"><span>BAKERY - SWEET - BIO</span></p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto"><a href="#">Discover</a></span>
-										</p>
-									</div>
-								</div>
-		    			</div>
-		    			<div class="col-md-4 ftco-animate">
-		    				<div class="destination">
-									<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(images/2.png);">
-										<div class="icon d-flex justify-content-center align-items-center">
-											<span class="icon-search2"></span>
-										</div>
-									</a>
-									<div class="text p-3">
-										<div class="d-flex">
-											<div class="one">
-												<h3><a href="#">Red sugar flower</a></h3>
-												<p class="rate">
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star"></i>
-													<i class="icon-star-o"></i>
-													<span>8 Rating</span>
-												</p>
-											</div>
-											<div class="two">
-												<span class="price">$2</span>
-											</div>
-										</div>
-										<p></p>
-										<p class="days"><span>BAKERY - SWEET - BIO</span></p>
-										<hr>
-										<p class="bottom-area d-flex">
-											<span><i class="icon-map-o"></i> <br>566 Nui Thanh St</span> 
-											<span class="ml-auto"><a href="#">Discover</a></span>
-										</p>
-									</div>
-								</div>
-		    			</div>
-          	</div>
+				<?php 
+                      }
+                        mysqli_close($conn);
+                ?>
           	<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27">
@@ -298,26 +147,32 @@
         </div>
       </div>
     </section> <!-- .section -->
+					  						
+												<?php
+												$ten = $_POST["ten"];
+											
+												$conn = mysqli_connect("localhost","root","","banhmy");
+												mysqli_set_charset($conn, 'UTF-8');
+												$result = mysqli_query($conn,"select * from table_banhmy where id =14");
+												$row = mysqli_fetch_assoc($result);
 
-											<div class="login" id="login-box">
+												?>
+											<div class="login" id="login-box"  style="width: 800px; top: 20%; left: 45%; border-radius: 1%">
 												<h4 style="text-align: center; margin-bottom: 0; color: #de3242; font-family: none; font-size: xx-large;">Infor Product</h4>
 												<hr>
 												<div class="row" style="font-family: initial;">
 													<div class="col-lg-6">
-														<img src="images/1-4.jpg" style="width: inherit; margin-left: 5%;" >
+														<img src="images/<?php echo $row["hinh"]; ?>" style="width: inherit; margin-left: 5%;  border-radius: 3%;" >
 													</div>
 													<div class="col-lg-6">
 														<div class="one">
-															<h4><a href="#">Red sugar flower</a></h4>
+															<h4><a href="#"><?php echo $row["ten"]; ?></a></h4>
 														</div>
 														<div class="two">
-															<span class="price" style="font-size: xx-large;">	&#36; 2</span>
+															<span class="price" style="font-size: xx-large;">	&#36; <?php echo $row["gia"]; ?></span>
 														</div>
 														<hr>
-														<p style="margin-right: 5%;">CKEditor (còn gọi là FCKeditor) là một trình soạn thảo mã nguồn mở theo kiểu WYSIWYG 
-														(tay làm - mắt thấy) của CKSource. Chương trình này có thể tích hợp vào các web site mà 
-														không cần cài đặt. Phiên bản đầu tiên được phát hành năm 2003 và đến nay được rất nhiều
-														người sử dụng.</p>
+														<?php echo $row["mo_ta"]; ?>
 													</div>
 												</div>
 											</div>
