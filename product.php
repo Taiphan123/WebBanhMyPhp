@@ -299,12 +299,12 @@
       </div>
     </section> <!-- .section -->
 
-											<div class="login" id="login-box">
+											<div class="login" id="login-box" style="width: 800px; top: 20%; left: 45%; border-radius: 1%">
 												<h4 style="text-align: center; margin-bottom: 0; color: #de3242; font-family: none; font-size: xx-large;">Infor Product</h4>
 												<hr>
 												<div class="row" style="font-family: initial;">
 													<div class="col-lg-6">
-														<img src="images/1-4.jpg" style="width: inherit; margin-left: 5%;" >
+														<img src="images/1-4.jpg" style="width: inherit; margin-left: 5%; border-radius: 3%;" >
 													</div>
 													<div class="col-lg-6">
 														<div class="one">
